@@ -117,6 +117,15 @@ class Controls {
       });
     });
 
+    // Mobile panel toggle
+    const toggleBtn = document.getElementById('togglePanel');
+    const controlPanel = document.getElementById('controlPanel');
+    if (toggleBtn && controlPanel) {
+      toggleBtn.addEventListener('click', () => {
+        controlPanel.classList.toggle('expanded');
+      });
+    }
+
     // Save changes to localStorage when any control changes
     document.querySelectorAll('input[type="range"], select').forEach(input => {
       input.addEventListener('change', () => {
