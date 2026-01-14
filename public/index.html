@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII Waves - Animated Ocean Waves in ASCII Art</title>
+  <meta name="description" content="Full-featured ASCII ocean waves animation with extensive controls and export capabilities. Watch beautiful rolling waves rendered entirely in text characters.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ascii-waves.pages.dev/">
+  <meta property="og:title" content="ASCII Waves - Animated Ocean Waves">
+  <meta property="og:description" content="Beautiful animated ocean waves rendered in ASCII art with customizable parameters">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ascii-waves.pages.dev/">
+  <meta property="twitter:title" content="ASCII Waves - Animated Ocean Waves">
+  <meta property="twitter:description" content="Beautiful animated ocean waves rendered in ASCII art with customizable parameters">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas -->
+  <canvas id="canvas"></canvas>
+
+  <!-- Control Panel -->
+  <div id="controlPanel" class="control-panel">
+    <!-- Header -->
+    <div class="panel-header">
+      <h1>ASCII Waves</h1>
+      <button id="togglePanel" class="toggle-btn" aria-label="Toggle control panel">☰</button>
+    </div>
+
+    <!-- Preset Buttons -->
+    <div class="preset-buttons">
+      <button data-preset="ocean" class="preset-btn">Ocean</button>
+      <button data-preset="sunset" class="preset-btn">Sunset</button>
+      <button data-preset="storm" class="preset-btn">Storm</button>
+      <button data-preset="night" class="preset-btn">Night</button>
+      <button data-preset="tropical" class="preset-btn">Tropical</button>
+      <button data-preset="terminal" class="preset-btn">Terminal</button>
+    </div>
+
+    <!-- Wave Physics Section -->
+    <div class="control-section">
+      <div class="section-header">
+        <h2>Wave Physics</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-content">
+        <div class="control-group">
+          <label for="amplitude">Amplitude: <span id="amplitudeValue">0.8</span></label>
+          <input type="range" id="amplitude" min="0" max="2" step="0.1" value="0.8">
+        </div>
+
+        <div class="control-group">
+          <label for="speed">Speed: <span id="speedValue">1.0</span></label>
+          <input type="range" id="speed" min="0" max="3" step="0.1" value="1.0">
+        </div>
+
+        <div class="control-group">
+          <label for="frequency">Frequency: <span id="frequencyValue">1.5</span></label>
+          <input type="range" id="frequency" min="0.1" max="5" step="0.1" value="1.5">
+        </div>
+
+        <div class="control-group">
+          <label for="layers">Layers: <span id="layersValue">3</span></label>
+          <input type="range" id="layers" min="1" max="5" step="1" value="3">
+        </div>
+
+        <div class="control-group">
+          <label for="choppiness">Choppiness: <span id="choppinessValue">0.3</span></label>
+          <input type="range" id="choppiness" min="0" max="1" step="0.05" value="0.3">
+        </div>
+
+        <div class="control-group">
+          <label for="foamThreshold">Foam Threshold: <span id="foamThresholdValue">0.7</span></label>
+          <input type="range" id="foamThreshold" min="0" max="1" step="0.05" value="0.7">
+        </div>
+
+        <div class="control-group">
+          <label for="depthEffect">Depth Effect: <span id="depthEffectValue">0.5</span></label>
+          <input type="range" id="depthEffect" min="0" max="1" step="0.05" value="0.5">
+        </div>
+
+        <div class="control-group">
+          <label for="timeSpeed">Time Speed: <span id="timeSpeedValue">1.5</span></label>
+          <input type="range" id="timeSpeed" min="0.1" max="3" step="0.1" value="1.5">
+        </div>
+
+        <div class="control-group">
+          <label>Noise Seed:</label>
+          <button id="regenerateSeed" class="btn">Regenerate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Appearance Section -->
+    <div class="control-section">
+      <div class="section-header">
+        <h2>Visual Appearance</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-content">
+        <div class="control-group">
+          <label for="cellSize">Cell Size: <span id="cellSizeValue">16</span></label>
+          <input type="range" id="cellSize" min="8" max="32" step="2" value="16">
+        </div>
+
+        <div class="control-group">
+          <label for="hue">Hue: <span id="hueValue">200</span></label>
+          <input type="range" id="hue" min="0" max="360" step="1" value="200">
+        </div>
+
+        <div class="control-group">
+          <label for="saturation">Saturation: <span id="saturationValue">0.6</span></label>
+          <input type="range" id="saturation" min="0" max="1" step="0.05" value="0.6">
+        </div>
+
+        <div class="control-group">
+          <label for="brightness">Brightness: <span id="brightnessValue">0.0</span></label>
+          <input type="range" id="brightness" min="-0.5" max="0.5" step="0.05" value="0">
+        </div>
+
+        <div class="control-group">
+          <label for="contrast">Contrast: <span id="contrastValue">1.0</span></label>
+          <input type="range" id="contrast" min="0.5" max="2" step="0.05" value="1.0">
+        </div>
+
+        <div class="control-group">
+          <label for="characterSet">Character Set:</label>
+          <select id="characterSet">
+            <option value="classic">Classic</option>
+            <option value="minimal">Minimal</option>
+            <option value="dense">Dense</option>
+            <option value="unicode">Unicode Extended</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Effects Section -->
+    <div class="control-section">
+      <div class="section-header">
+        <h2>Effects</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-content">
+        <div class="control-group">
+          <label for="vignetteIntensity">Vignette Intensity: <span id="vignetteIntensityValue">0.4</span></label>
+          <input type="range" id="vignetteIntensity" min="0" max="1" step="0.05" value="0.4">
+        </div>
+
+        <div class="control-group">
+          <label for="vignetteRadius">Vignette Radius: <span id="vignetteRadiusValue">0.6</span></label>
+          <input type="range" id="vignetteRadius" min="0" max="1" step="0.05" value="0.6">
+        </div>
+      </div>
+    </div>
+
+    <!-- Export/Save Section -->
+    <div class="control-section">
+      <div class="section-header">
+        <h2>Export & Share</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-content">
+        <div class="export-buttons">
+          <button id="saveJSON" class="btn">Save Config</button>
+          <button id="loadJSON" class="btn">Load Config</button>
+          <input type="file" id="loadJSONInput" accept=".json" style="display: none;">
+          <button id="screenshot" class="btn">Screenshot</button>
+          <button id="shareURL" class="btn">Share URL</button>
+          <button id="copyFrame" class="btn">Copy Frame</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcuts -->
+    <div class="shortcuts">
+      <h3>Keyboard Shortcuts</h3>
+      <div class="shortcut-list">
+        <div><kbd>1-6</kbd> Load presets</div>
+        <div><kbd>Ctrl+S</kbd> Screenshot</div>
+        <div><kbd>Ctrl+R</kbd> Regenerate seed</div>
+        <div><kbd>Ctrl+Shift+C</kbd> Share URL</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/noise.js"></script>
+  <script src="js/wave-engine.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/presets.js"></script>
+  <script src="js/controls.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

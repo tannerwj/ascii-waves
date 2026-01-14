@@ -1,0 +1,16 @@
+{
+  "name": "ascii-waves",
+  "version": "1.0.0",
+  "description": "Full-featured ASCII ocean waves animation with extensive controls and export capabilities",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "npx wrangler pages dev public",
+    "deploy": "npx wrangler pages deploy public"
+  },
+  "keywords": ["ascii", "waves", "animation", "canvas", "ocean", "art"],
+  "author": "Tanner",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
