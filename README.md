@@ -2,7 +2,7 @@
 
 Beautiful animated ocean waves rendered entirely in ASCII art with full customization and export capabilities.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-blue)](https://ascii-waves.pages.dev)
+[![Live Demo](https://img.shields.io/badge/demo-live-blue)](https://ascii-waves.tannerwj.com)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## Features
@@ -18,7 +18,7 @@ Beautiful animated ocean waves rendered entirely in ASCII art with full customiz
 
 ## Live Demo
 
-Visit [ascii-waves.pages.dev](https://ascii-waves.pages.dev) to see it in action!
+Visit [ascii-waves.tannerwj.com](https://ascii-waves.tannerwj.com) to see it in action!
 
 ## How It Works
 
@@ -197,7 +197,7 @@ Created by Tanner with Claude Sonnet 4.5
 
 ## Links
 
-- **Live Demo**: [ascii-waves.pages.dev](https://ascii-waves.pages.dev)
+- **Live Demo**: [ascii-waves.tannerwj.com](https://ascii-waves.tannerwj.com)
 - **GitHub**: [github.com/tannerwj/ascii-waves](https://github.com/tannerwj/ascii-waves)
 - **Issues**: [Report bugs or request features](https://github.com/tannerwj/ascii-waves/issues)
 
